@@ -718,10 +718,10 @@ func (r *RedisClient) GetBalance(login string) (int64, error) {
 func (r *RedisClient) GetThreshold(login string) (int64, error) {
 	cmd := r.client.HGet(r.formatKey("settings", login), "payoutthreshold")
 	if cmd.Err() == redis.Nil {
-		return 500000000, nil
+		return 100000000, nil
 	} else if cmd.Err() != nil {
 		log.Println("GetThreshold error :", cmd.Err())
-		return 500000000, cmd.Err()
+		return 100000000, cmd.Err()
 	}
 
 	return cmd.Int64()
@@ -1989,8 +1989,8 @@ func (r *RedisClient) GetMiningType(login string) string {
 	cmd := r.client.HGet(r.formatKey("settings", login), "miningType")
 	//log.Println("MINING TYPE for : ", login)
 	if cmd.Err() == redis.Nil {
-		//	log.Println("MINING TYPE RETURN solo")
-		return "solo"
+		//	log.Println("MINING TYPE RETURN pplns")
+		return "pplns"
 	} else if cmd.Err() != nil {
 		//log.Println("MINING TYPE RETURN NA")
 		return "NA"
