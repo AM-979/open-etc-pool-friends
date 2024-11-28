@@ -49,7 +49,7 @@ func NewRestClient(name, url, timeout string) *RestClient {
 	}
 	return restClient
 }
-
+// update exchange xeggex config name
 // GetData fetches the data from the given URL and processes it
 func (r *RestClient) GetData() ([]map[string]interface{}, error) {
 	// If the name is "xeggex", use the xeggex-specific code
